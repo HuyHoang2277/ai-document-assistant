@@ -43,26 +43,26 @@ flowchart TD
     end
 
     %% Ingestion Flow
-    Client -->|1. Upload PDF / DOCX| RateLimiter
-    RateLimiter -->|Pass| Controller
-    Controller -->|Dispatch File| Ingestion
-    Ingestion -->|2. Extract & Chunk| Ingestion
-    Ingestion -->|3. Generate Embeddings| LLM
-    LLM -->|Vector Embeddings| Ingestion
-    Ingestion -->|4. Store Chunks + Metadata| PGVector
+    Client -->|"1. Upload PDF / DOCX"| RateLimiter
+    RateLimiter -->|"Allow"| Controller
+    Controller -->|"Dispatch File"| Ingestion
+    Ingestion -->|"2. Extract & Chunk"| Ingestion
+    Ingestion -->|"3. Generate Embeddings"| LLM
+    LLM -->|"Vector Embeddings"| Ingestion
+    Ingestion -->|"4. Store Chunks + Metadata"| PGVector
 
     %% RAG Query Flow
-    Client -->|5. Ask Question| RateLimiter
-    RateLimiter -->|Pass| Controller
-    Controller -->|Check Cache| Redis
-    Redis -.->|Cache Hit (Immediate Return)| Controller
-    Controller -->|Cache Miss| RAG
-    RAG -->|6. Semantic Similarity Search| PGVector
-    PGVector -->|Top-K Context Chunks| RAG
-    RAG -->|7. Prompt + Context Injection| LLM
-    LLM -->|8. Token Stream| RAG
-    RAG -->|9. SSE Real-time Chunks (text/event-stream)| Client
-    RAG -.->|Async Save Response| Redis
+    Client -->|"5. Ask Question"| RateLimiter
+    RateLimiter -->|"Allow"| Controller
+    Controller -->|"Check Cache"| Redis
+    Redis -.->|"Cache Hit: Immediate Return"| Controller
+    Controller -->|"Cache Miss"| RAG
+    RAG -->|"6. Semantic Similarity Search"| PGVector
+    PGVector -->|"Top-K Context Chunks"| RAG
+    RAG -->|"7. Prompt + Context Injection"| LLM
+    LLM -->|"8. Token Stream"| RAG
+    RAG -->|"9. SSE Real-time Streaming"| Client
+    RAG -.->|"Async Save Response"| Redis
 ```
 
 ---
