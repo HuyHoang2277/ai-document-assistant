@@ -19,6 +19,58 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# Personal Project Notes & Plan
+PLAN.md
+
+# Environment Variables & Secrets (NEVER COMMIT SENSITIVE KEYS)
+.env
+*.env
+!.env.example
+application-local.yaml
+application-local.properties
+
+# Build Directories
+target/
+**/target/
+build/
+**/build/
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+
+# Environment Variables & Secrets (NEVER COMMIT SENSITIVE KEYS)
+.env
+*.env
+!.env.example
+application-local.yaml
+application-local.properties
+
+# Build Directories
+target/
+**/target/
+build/
+**/build/
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Operating System Files
+.DS_Store
+Thumbs.db
